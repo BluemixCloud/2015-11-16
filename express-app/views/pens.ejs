@@ -1,0 +1,28 @@
+<% include ./template/header %>
+<% include ./template/nav %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Pens</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-3 columns">
+    <input id="txt-title" type="text" placeholder="title" />
+    <input id="txt-date" type="date" placeholder="date" />
+    <textarea style="height: 150px;" id="txt-code"></textarea>
+    <button id="btn-add">Add</button>
+  </div>
+  <div class="small-9 columns"></div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div id="pens"></div>
+  </div>
+</div>
+
+<% include ./template/scripts %>
+<script src="/js/pens.js"></script>
+<% include ./template/footer %>

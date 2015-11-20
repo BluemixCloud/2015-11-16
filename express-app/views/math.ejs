@@ -1,0 +1,23 @@
+<% include ./template/header %>
+<% include ./template/nav %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Math</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-3 columns">
+    <input id="txt-numbers" type="text" placeholder="numbers" />
+    <input id="txt-phone" type="text" placeholder="phone" />
+    <button id="btn-compute">Compute</button>
+    <div id="div-sum"></div>
+    <div id="div-avg"></div>
+  </div>
+  <div class="small-9 columns"></div>
+</div>
+
+<% include ./template/scripts %>
+<script src="/js/math.js"></script>
+<% include ./template/footer %>

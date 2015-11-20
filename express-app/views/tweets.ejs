@@ -1,0 +1,36 @@
+<% include ./template/header %>
+<% include ./template/nav %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Tweets</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div id="graph"></div>
+    <audio controls="true"></audio>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Tweet</th>
+          <th>Score</th>
+          <th>Play</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% include ./template/scripts %>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="/js/tweets.js"></script>
+<% include ./template/footer %>

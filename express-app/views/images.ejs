@@ -1,0 +1,44 @@
+<% include ./template/header %>
+<% include ./template/nav %>
+
+<style>
+  img{
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+  }
+</style>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h1>Images</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-4 columns">
+    <input id="txt-url" type="text" placeholder="url" />
+    <button id="btn-add">Add Image</button>
+  </div>
+  <div class="small-8 columns">
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Analysis</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% include ./template/scripts %>
+<script src="/js/images.js"></script>
+<% include ./template/footer %>
