@@ -1,0 +1,1048 @@
+{
+  "_id": "ca-101-chyld-nodered/flow",
+  "_rev": "72-02bdb9055c112fc6d7b82fe3e80f25e0",
+  "flow": [
+    {
+      "type": "tab",
+      "id": "2716250c.d8e9da",
+      "label": "Dice"
+    },
+    {
+      "type": "tab",
+      "id": "6e2d66c2.91d298",
+      "label": "Distance"
+    },
+    {
+      "type": "tab",
+      "id": "65be007a.9a42",
+      "label": "Stock"
+    },
+    {
+      "type": "tab",
+      "id": "fdcc4fe2.0233b",
+      "label": "SMS"
+    },
+    {
+      "type": "tab",
+      "id": "1f793fe3.e086c",
+      "label": "Math"
+    },
+    {
+      "type": "tab",
+      "id": "534a8cf4.acb574",
+      "label": "Pens"
+    },
+    {
+      "type": "tab",
+      "id": "c91c7cd8.36e38",
+      "label": "Twitter"
+    },
+    {
+      "type": "tab",
+      "id": "9a11696a.65ee98",
+      "label": "Audio"
+    },
+    {
+      "type": "tab",
+      "id": "75b10cb2.8a4ef4",
+      "label": "SMS"
+    },
+    {
+      "type": "tab",
+      "id": "2a86e2e9.d5791e",
+      "label": "Image Recognition"
+    },
+    {
+      "id": "e39f120b.1c60f",
+      "type": "twilio-api",
+      "z": "fdcc4fe2.0233b",
+      "sid": "ACd217abbc48de88f1ce72d827bf396373",
+      "from": "+1 917-746-1483",
+      "name": ""
+    },
+    {
+      "id": "10463788.efb9c8",
+      "type": "twilio-api",
+      "z": "1f793fe3.e086c",
+      "sid": "ACd217abbc48de88f1ce72d827bf396373",
+      "from": "+1 917-746-1483",
+      "name": ""
+    },
+    {
+      "id": "8f888fb0.70777",
+      "type": "twitter-credentials",
+      "z": "c91c7cd8.36e38",
+      "screen_name": "@chyldmedford"
+    },
+    {
+      "id": "c6d8ae84.39275",
+      "type": "twilio-api",
+      "z": "75b10cb2.8a4ef4",
+      "sid": "ACd217abbc48de88f1ce72d827bf396373",
+      "from": "+1 917-746-1483",
+      "name": ""
+    },
+    {
+      "id": "3849baca.c7b646",
+      "type": "function",
+      "z": "2716250c.d8e9da",
+      "name": "",
+      "func": "var roll = Math.floor(Math.random() * 6) + 1;\n\nmsg.payload = {roll: roll};\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 371,
+      "y": 132,
+      "wires": [
+        [
+          "8286fead.7d79",
+          "6e8a80df.91758"
+        ]
+      ]
+    },
+    {
+      "id": "5f2340f7.a0dcc",
+      "type": "http in",
+      "z": "2716250c.d8e9da",
+      "name": "",
+      "url": "/dice",
+      "method": "get",
+      "swaggerDoc": "",
+      "x": 180,
+      "y": 64,
+      "wires": [
+        [
+          "3849baca.c7b646",
+          "b8f13062.470ed"
+        ]
+      ]
+    },
+    {
+      "id": "8286fead.7d79",
+      "type": "http response",
+      "z": "2716250c.d8e9da",
+      "name": "",
+      "x": 556,
+      "y": 78,
+      "wires": []
+    },
+    {
+      "id": "b8f13062.470ed",
+      "type": "debug",
+      "z": "2716250c.d8e9da",
+      "name": "a",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 342,
+      "y": 272,
+      "wires": []
+    },
+    {
+      "id": "6e8a80df.91758",
+      "type": "debug",
+      "z": "2716250c.d8e9da",
+      "name": "b",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 559,
+      "y": 216,
+      "wires": []
+    },
+    {
+      "id": "c3bf8e44.3c407",
+      "type": "http in",
+      "z": "6e2d66c2.91d298",
+      "name": "",
+      "url": "/distance",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 174,
+      "y": 169,
+      "wires": [
+        [
+          "bd886513.427798",
+          "4b00f5c9.b4ff0c"
+        ]
+      ]
+    },
+    {
+      "id": "7461d3db.8b9e2c",
+      "type": "http response",
+      "z": "6e2d66c2.91d298",
+      "name": "",
+      "x": 580,
+      "y": 124,
+      "wires": []
+    },
+    {
+      "id": "bd886513.427798",
+      "type": "debug",
+      "z": "6e2d66c2.91d298",
+      "name": "a",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 489,
+      "y": 466,
+      "wires": []
+    },
+    {
+      "id": "4b00f5c9.b4ff0c",
+      "type": "function",
+      "z": "6e2d66c2.91d298",
+      "name": "",
+      "func": "var p1_x = msg.payload.p1.x * 1;\nvar p1_y = msg.payload.p1.y * 1;\nvar p2_x = msg.payload.p2.x * 1;\nvar p2_y = msg.payload.p2.y * 1;\n\nvar dx = p2_x - p1_x;\nvar dy = p2_y - p1_y;\n\nvar distance = Math.sqrt((dx*dx) + (dy*dy));\nmsg.payload = {distance: distance};\n\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 406,
+      "y": 214,
+      "wires": [
+        [
+          "7461d3db.8b9e2c",
+          "7ee20cb4.811df4"
+        ]
+      ]
+    },
+    {
+      "id": "7ee20cb4.811df4",
+      "type": "debug",
+      "z": "6e2d66c2.91d298",
+      "name": "b",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 635,
+      "y": 288,
+      "wires": []
+    },
+    {
+      "id": "ce8cd935.317328",
+      "type": "http in",
+      "z": "65be007a.9a42",
+      "name": "",
+      "url": "/stock",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 127,
+      "y": 112,
+      "wires": [
+        [
+          "deb9c9ef.214638",
+          "71848498.8e7b7c"
+        ]
+      ]
+    },
+    {
+      "id": "2425e701.dbda18",
+      "type": "http response",
+      "z": "65be007a.9a42",
+      "name": "",
+      "x": 658,
+      "y": 90,
+      "wires": []
+    },
+    {
+      "id": "deb9c9ef.214638",
+      "type": "debug",
+      "z": "65be007a.9a42",
+      "name": "a",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 224,
+      "y": 300,
+      "wires": []
+    },
+    {
+      "id": "536fc556.ac903c",
+      "type": "http request",
+      "z": "65be007a.9a42",
+      "name": "",
+      "method": "GET",
+      "ret": "obj",
+      "url": "",
+      "x": 450,
+      "y": 255,
+      "wires": [
+        [
+          "2425e701.dbda18",
+          "70f8c22f.8f073c"
+        ]
+      ]
+    },
+    {
+      "id": "70f8c22f.8f073c",
+      "type": "debug",
+      "z": "65be007a.9a42",
+      "name": "b",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 664,
+      "y": 345,
+      "wires": []
+    },
+    {
+      "id": "71848498.8e7b7c",
+      "type": "function",
+      "z": "65be007a.9a42",
+      "name": "",
+      "func": "msg.url = 'http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=' + msg.payload.symbol;\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 328,
+      "y": 91,
+      "wires": [
+        [
+          "536fc556.ac903c"
+        ]
+      ]
+    },
+    {
+      "id": "f4e22e7e.0b1dd",
+      "type": "http in",
+      "z": "fdcc4fe2.0233b",
+      "name": "",
+      "url": "/sms",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 181,
+      "y": 116,
+      "wires": [
+        [
+          "89a39628.765c68",
+          "4aee1ebe.b511e",
+          "8012acef.7fed5"
+        ]
+      ]
+    },
+    {
+      "id": "4aee1ebe.b511e",
+      "type": "http response",
+      "z": "fdcc4fe2.0233b",
+      "name": "",
+      "x": 464,
+      "y": 62,
+      "wires": []
+    },
+    {
+      "id": "89a39628.765c68",
+      "type": "debug",
+      "z": "fdcc4fe2.0233b",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "false",
+      "x": 290,
+      "y": 350,
+      "wires": []
+    },
+    {
+      "id": "caa727bf.3558d8",
+      "type": "twilio out",
+      "z": "fdcc4fe2.0233b",
+      "service": "_ext_",
+      "twilio": "e39f120b.1c60f",
+      "from": "",
+      "number": "",
+      "name": "",
+      "x": 593,
+      "y": 280,
+      "wires": []
+    },
+    {
+      "id": "8012acef.7fed5",
+      "type": "function",
+      "z": "fdcc4fe2.0233b",
+      "name": "",
+      "func": "msg.topic = msg.payload.phone;\nmsg.payload = msg.payload.position;\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 401,
+      "y": 171,
+      "wires": [
+        [
+          "caa727bf.3558d8",
+          "325b6834.cda498",
+          "a8565ee1.57a9a"
+        ]
+      ]
+    },
+    {
+      "id": "325b6834.cda498",
+      "type": "debug",
+      "z": "fdcc4fe2.0233b",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "false",
+      "x": 638,
+      "y": 149,
+      "wires": []
+    },
+    {
+      "id": "a8565ee1.57a9a",
+      "type": "debug",
+      "z": "fdcc4fe2.0233b",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "topic",
+      "x": 613,
+      "y": 207,
+      "wires": []
+    },
+    {
+      "id": "c1e416fa.3e1be8",
+      "type": "http in",
+      "z": "1f793fe3.e086c",
+      "name": "",
+      "url": "/math",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 123,
+      "y": 102,
+      "wires": [
+        [
+          "da1739aa.25e8c8",
+          "25fef010.da011"
+        ]
+      ]
+    },
+    {
+      "id": "b0a03094.4f5fd",
+      "type": "http response",
+      "z": "1f793fe3.e086c",
+      "name": "",
+      "x": 663,
+      "y": 54,
+      "wires": []
+    },
+    {
+      "id": "da1739aa.25e8c8",
+      "type": "debug",
+      "z": "1f793fe3.e086c",
+      "name": "a",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 274,
+      "y": 301,
+      "wires": []
+    },
+    {
+      "id": "25fef010.da011",
+      "type": "function",
+      "z": "1f793fe3.e086c",
+      "name": "",
+      "func": "msg.topic = msg.payload.phone;\nvar numbers = msg.payload.numbers.split(',');\nvar sum = 0;\nfor(var i = 0; i < numbers.length; i++){\n    sum += (numbers[i] * 1);\n}\n\nvar avg = sum / numbers.length;\nmsg.payload = {sum: sum, avg: avg};\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 411,
+      "y": 160,
+      "wires": [
+        [
+          "b0a03094.4f5fd",
+          "d47aadea.2b855",
+          "b2df7c65.4d208"
+        ]
+      ]
+    },
+    {
+      "id": "d47aadea.2b855",
+      "type": "debug",
+      "z": "1f793fe3.e086c",
+      "name": "b",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 684,
+      "y": 252,
+      "wires": []
+    },
+    {
+      "id": "b2df7c65.4d208",
+      "type": "twilio out",
+      "z": "1f793fe3.e086c",
+      "service": "_ext_",
+      "twilio": "10463788.efb9c8",
+      "from": "",
+      "number": "",
+      "name": "",
+      "x": 736,
+      "y": 155,
+      "wires": []
+    },
+    {
+      "id": "a462f67.f5b9d08",
+      "type": "http in",
+      "z": "534a8cf4.acb574",
+      "name": "",
+      "url": "/pens",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 179,
+      "y": 123,
+      "wires": [
+        [
+          "5bf7ba4f.a40844",
+          "a4feb0c2.5b015",
+          "3b863e1c.c479c2"
+        ]
+      ]
+    },
+    {
+      "id": "a4feb0c2.5b015",
+      "type": "http response",
+      "z": "534a8cf4.acb574",
+      "name": "",
+      "x": 434,
+      "y": 56,
+      "wires": []
+    },
+    {
+      "id": "5bf7ba4f.a40844",
+      "type": "debug",
+      "z": "534a8cf4.acb574",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "false",
+      "x": 354,
+      "y": 274,
+      "wires": []
+    },
+    {
+      "id": "3b863e1c.c479c2",
+      "type": "cloudant out",
+      "z": "534a8cf4.acb574",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "pens",
+      "payonly": true,
+      "operation": "insert",
+      "x": 578,
+      "y": 203,
+      "wires": []
+    },
+    {
+      "id": "50e1a295.af1e5c",
+      "type": "http in",
+      "z": "534a8cf4.acb574",
+      "name": "",
+      "url": "/pens",
+      "method": "get",
+      "swaggerDoc": "",
+      "x": 133,
+      "y": 361,
+      "wires": [
+        [
+          "52443d4c.adbbc4",
+          "92b3fa4.f6d4c08"
+        ]
+      ]
+    },
+    {
+      "id": "570ea226.a8f15c",
+      "type": "http response",
+      "z": "534a8cf4.acb574",
+      "name": "",
+      "x": 588,
+      "y": 355,
+      "wires": []
+    },
+    {
+      "id": "52443d4c.adbbc4",
+      "type": "debug",
+      "z": "534a8cf4.acb574",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "false",
+      "x": 298,
+      "y": 539,
+      "wires": []
+    },
+    {
+      "id": "92b3fa4.f6d4c08",
+      "type": "cloudant in",
+      "z": "534a8cf4.acb574",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "pens",
+      "search": "_all_",
+      "design": "",
+      "index": "",
+      "x": 370,
+      "y": 410,
+      "wires": [
+        [
+          "570ea226.a8f15c"
+        ]
+      ]
+    },
+    {
+      "id": "bb153bbd.44eac8",
+      "type": "twitter in",
+      "z": "c91c7cd8.36e38",
+      "twitter": "8f888fb0.70777",
+      "tags": "#trump",
+      "user": "false",
+      "name": "",
+      "topic": "tweets",
+      "x": 94,
+      "y": 54,
+      "wires": [
+        [
+          "56383e75.a9c7c",
+          "9f43da1d.60bc28"
+        ]
+      ]
+    },
+    {
+      "id": "56383e75.a9c7c",
+      "type": "debug",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "active": false,
+      "console": "false",
+      "complete": "false",
+      "x": 123,
+      "y": 225,
+      "wires": []
+    },
+    {
+      "id": "9f43da1d.60bc28",
+      "type": "sentiment",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "x": 291,
+      "y": 131,
+      "wires": [
+        [
+          "e985f836.167a08",
+          "e0f6a92f.1f0958"
+        ]
+      ]
+    },
+    {
+      "id": "e985f836.167a08",
+      "type": "debug",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "active": false,
+      "console": "false",
+      "complete": "sentiment",
+      "x": 294,
+      "y": 387,
+      "wires": []
+    },
+    {
+      "id": "e0f6a92f.1f0958",
+      "type": "function",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "func": "var tweet = msg.payload;\nvar sentiment = msg.sentiment;\nmsg.payload = {tweet: tweet, score: sentiment.score};\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 470,
+      "y": 267,
+      "wires": [
+        [
+          "2df2604b.d20da",
+          "27e00e33.d81ff2"
+        ]
+      ]
+    },
+    {
+      "id": "2df2604b.d20da",
+      "type": "debug",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "active": false,
+      "console": "false",
+      "complete": "false",
+      "x": 639,
+      "y": 442,
+      "wires": []
+    },
+    {
+      "id": "27e00e33.d81ff2",
+      "type": "cloudant out",
+      "z": "c91c7cd8.36e38",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "tweets",
+      "payonly": true,
+      "operation": "insert",
+      "x": 667,
+      "y": 112,
+      "wires": []
+    },
+    {
+      "id": "6ee4b93d.911b48",
+      "type": "http in",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "url": "/tweets",
+      "method": "get",
+      "swaggerDoc": "",
+      "x": 160,
+      "y": 545,
+      "wires": [
+        [
+          "95a2fd5d.6a5d"
+        ]
+      ]
+    },
+    {
+      "id": "8f05207.f70fae",
+      "type": "http response",
+      "z": "c91c7cd8.36e38",
+      "name": "",
+      "x": 541,
+      "y": 534,
+      "wires": []
+    },
+    {
+      "id": "95a2fd5d.6a5d",
+      "type": "cloudant in",
+      "z": "c91c7cd8.36e38",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "tweets",
+      "search": "_all_",
+      "design": "",
+      "index": "",
+      "x": 346,
+      "y": 475,
+      "wires": [
+        [
+          "8f05207.f70fae"
+        ]
+      ]
+    },
+    {
+      "id": "fdd0738d.022f9",
+      "type": "http in",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "url": "/translate",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 114,
+      "y": 36,
+      "wires": [
+        [
+          "fc0bbfe.f03f44",
+          "6c6debc8.939214"
+        ]
+      ]
+    },
+    {
+      "id": "fc0bbfe.f03f44",
+      "type": "http response",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "x": 477,
+      "y": 46,
+      "wires": []
+    },
+    {
+      "id": "6c6debc8.939214",
+      "type": "function",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "func": "msg.save = {};\n\nmsg.save.from = msg.payload.From;\nmsg.save.body = msg.payload.Body;\n\nmsg.payload = msg.save.body;\n\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 222,
+      "y": 143,
+      "wires": [
+        [
+          "23cc7c35.dc3384"
+        ]
+      ]
+    },
+    {
+      "id": "23cc7c35.dc3384",
+      "type": "watson-translate",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "srclang": "en",
+      "destlang": "fr",
+      "domain": "conversational",
+      "x": 267,
+      "y": 253,
+      "wires": [
+        [
+          "f3da24c.f0c25d8"
+        ]
+      ]
+    },
+    {
+      "id": "f3da24c.f0c25d8",
+      "type": "function",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "func": "var translated = msg.payload;\nmsg.payload = {};\nmsg.payload.from = msg.save.from;\nmsg.payload.original = msg.save.body;\nmsg.payload.translated = translated;\n\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 314,
+      "y": 367,
+      "wires": [
+        [
+          "52630730.ad9cf8",
+          "3febe78a.c01418"
+        ]
+      ]
+    },
+    {
+      "id": "52630730.ad9cf8",
+      "type": "cloudant out",
+      "z": "75b10cb2.8a4ef4",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "translations",
+      "payonly": true,
+      "operation": "insert",
+      "x": 463,
+      "y": 437,
+      "wires": []
+    },
+    {
+      "id": "326828a0.cd97d8",
+      "type": "twilio out",
+      "z": "75b10cb2.8a4ef4",
+      "service": "_ext_",
+      "twilio": "c6d8ae84.39275",
+      "from": "",
+      "number": "",
+      "name": "",
+      "x": 663,
+      "y": 198,
+      "wires": []
+    },
+    {
+      "id": "3febe78a.c01418",
+      "type": "function",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "func": "msg.topic = msg.payload.from;\nmsg.payload = msg.payload.translated;\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 512,
+      "y": 295,
+      "wires": [
+        [
+          "326828a0.cd97d8"
+        ]
+      ]
+    },
+    {
+      "id": "926556c0.6d9aa8",
+      "type": "http in",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "url": "/translations",
+      "method": "get",
+      "swaggerDoc": "",
+      "x": 156,
+      "y": 554,
+      "wires": [
+        [
+          "1772b471.e88d4c"
+        ]
+      ]
+    },
+    {
+      "id": "bc1af732.43e508",
+      "type": "http response",
+      "z": "75b10cb2.8a4ef4",
+      "name": "",
+      "x": 562,
+      "y": 592,
+      "wires": []
+    },
+    {
+      "id": "1772b471.e88d4c",
+      "type": "cloudant in",
+      "z": "75b10cb2.8a4ef4",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "translations",
+      "search": "_all_",
+      "design": "",
+      "index": "",
+      "x": 376,
+      "y": 599,
+      "wires": [
+        [
+          "bc1af732.43e508"
+        ]
+      ]
+    },
+    {
+      "id": "f04c9841.0fb368",
+      "type": "http in",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "url": "/images",
+      "method": "post",
+      "swaggerDoc": "",
+      "x": 126,
+      "y": 61,
+      "wires": [
+        [
+          "145a82a9.eba57d",
+          "600161d.f9ffea"
+        ]
+      ]
+    },
+    {
+      "id": "145a82a9.eba57d",
+      "type": "http response",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "x": 479,
+      "y": 104,
+      "wires": []
+    },
+    {
+      "id": "13896408.ec769c",
+      "type": "watson-visual-recognition",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "x": 268,
+      "y": 288,
+      "wires": [
+        [
+          "b1f70b76.4e08f8",
+          "fb780e32.0487f"
+        ]
+      ]
+    },
+    {
+      "id": "600161d.f9ffea",
+      "type": "function",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "func": "msg.payload = msg.payload.url;\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 219,
+      "y": 186,
+      "wires": [
+        [
+          "13896408.ec769c"
+        ]
+      ]
+    },
+    {
+      "id": "b1f70b76.4e08f8",
+      "type": "function",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "func": "var url = msg.payload;\nvar analysis = msg.labels;\nmsg.payload = {url: url, analysis: analysis};\nreturn msg;\n",
+      "outputs": 1,
+      "noerr": 0,
+      "x": 443,
+      "y": 197,
+      "wires": [
+        [
+          "9864c0c7.679b4",
+          "1a87fcc9.e57803"
+        ]
+      ]
+    },
+    {
+      "id": "9864c0c7.679b4",
+      "type": "cloudant out",
+      "z": "2a86e2e9.d5791e",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "images",
+      "payonly": true,
+      "operation": "insert",
+      "x": 597,
+      "y": 261,
+      "wires": []
+    },
+    {
+      "id": "e1235aa4.1edca8",
+      "type": "http in",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "url": "/images",
+      "method": "get",
+      "swaggerDoc": "",
+      "x": 147,
+      "y": 472,
+      "wires": [
+        [
+          "19bf5eb7.e640a1"
+        ]
+      ]
+    },
+    {
+      "id": "78f6da03.870924",
+      "type": "http response",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "x": 530,
+      "y": 438,
+      "wires": []
+    },
+    {
+      "id": "19bf5eb7.e640a1",
+      "type": "cloudant in",
+      "z": "2a86e2e9.d5791e",
+      "service": "ca-101-chyld-nodered-cloudantNoSQLDB",
+      "cloudant": "",
+      "name": "",
+      "database": "images",
+      "search": "_all_",
+      "design": "",
+      "index": "",
+      "x": 363,
+      "y": 478,
+      "wires": [
+        [
+          "78f6da03.870924"
+        ]
+      ]
+    },
+    {
+      "id": "fb780e32.0487f",
+      "type": "debug",
+      "z": "2a86e2e9.d5791e",
+      "name": "",
+      "active": true,
+      "console": "false",
+      "complete": "false",
+      "x": 481,
+      "y": 359,
+      "wires": []
+    },
+    {
+      "id": "1a87fcc9.e57803",
+      "type": "debug",
+      "z": "2a86e2e9.d5791e",
+      "name": "db insert",
+      "active": true,
+      "console": "false",
+      "complete": "payload",
+      "x": 662,
+      "y": 172,
+      "wires": []
+    }
+  ]
+}
